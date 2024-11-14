@@ -7,3 +7,10 @@ export const generateUserErrorInfo = (user) => {
         edad: como valor de esta propiedad -> ${user.edad}
     `
 }
+
+export const mocksParamsErrorInfo = (num) => {
+    return `
+        El número ingresado (${num}) no es válido. 
+        Debe ingresar un número mayor a cero.
+    `
+}

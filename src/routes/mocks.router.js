@@ -1,5 +1,7 @@
 import { Router } from "express"
 import { generatePet, generateUser } from "../utils/utils.js"
+import HandleError from "../handleErrors/handleErrors.js"
+import { generateUserErrorInfo } from "../handleErrors/userErrors.js"
 
 const router = Router()
 

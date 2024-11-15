@@ -22,7 +22,8 @@ router.get('/mockingpets/:num', (req, res) => {
             name:'Error en parámetro recibido',
             cause: mocksParamsErrorInfo(num),
             message: 'Número para crear mascotas inválido',
-            code: EErrors.INVALID_TYPES
+            type: EErrors.INVALID_TYPES,
+            code: 400
         })
     } 
     for (let i = 0; i < num; i++){
@@ -43,7 +44,8 @@ router.get('/mockingusers/:num', (req, res) => {
             name:'Error en parámetro recibido',
             cause: mocksParamsErrorInfo(num),
             message: 'Número para crear mascotas inválido',
-            code: EErrors.INVALID_TYPES
+            type: EErrors.INVALID_TYPES,
+            code: 400
         })
     } 
     for (let i = 0; i < num; i++){
@@ -52,10 +54,25 @@ router.get('/mockingusers/:num', (req, res) => {
     res.status(200).json({payload:users})
 })
 
-router.post('/generateData/:users/:pets', (req, res) => {
-    const { users, pets } = req.params
-
+router.post('/generateData/:userCount/:petCount', (req, res) => {
+    const { userCount, petCount } = req.params
+    if(userCount <= 0 || petCount <= 0) {
+        HandleError.createError({
+            name:'Error en parámetro recibido',
+            cause: mocksParamsErrorInfo(userCount, petCount),
+            message: 'Número para generar datos inválido',
+            type: EErrors.INVALID_TYPES,
+            code: 400
+        })
+    }
     
+    for(let i = 0; i < userCount; i++){
+        users.push(generateUser())
+    }
+    for(let i = 0; i < petCount; i++){
+        pets.push(generatePet())
+    }
+    res.status(200).json({users_payload: users, pets_payload: pets})
 })
 
 router.use(middlewareError)

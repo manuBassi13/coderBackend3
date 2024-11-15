@@ -1,18 +1,18 @@
-import { EErrors } from "../handleErrors/handleErrors.js";
+import { EErrors, codes } from "../handleErrors/handleErrors.js";
 
 export default (err, req, res, next) => {
-    switch(err.code){
+    switch(err.type){
         case EErrors.INVALID_TYPES:
-            res.json({status: "Error en propiedades recibidas", error: err.name})
+            res.status(err.code).json({status: codes[err.code], error: err.name, message: 'Error en el tipo de dato'})
             break;
         case EErrors.DB:
-            res.json({status: "Error en la base de datos", error: err.name})
+            res.status(err.code).json({status: codes[err.code], error: err.name, message: 'Error en la Base de Datos'})
             break;
         case EErrors.ROUTE:
-            res.json({status: "Error en la ruta", error: err.name})
+            res.status(err.code).json({status: codes[err.code], error: err.name, message: 'Error en la ruta'})
             break;
         default:
-            res.json({status: "Error genérico", error: err.name})
+            res.status(404).json({status: codes[404], error: err.name, message: 'Error genérico'})
             break;
     }
 

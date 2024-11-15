@@ -8,9 +8,16 @@ export const generateUserErrorInfo = (user) => {
     `
 }
 
-export const mocksParamsErrorInfo = (num) => {
-    return `
-        El número ingresado (${num}) no es válido. 
-        Debe ingresar un número mayor a cero.
+export const mocksParamsErrorInfo = (...num) => {
+    if(num.length > 1) {
+        return `
+        Los números ingresados ${num} no son válidos. 
+        Debe ingresar números mayores a cero.
     `
+    } else {
+        return `
+            El número ingresado ${num} no es válido. 
+            Debe ingresar un número mayor a cero.
+        `
+    }
 }

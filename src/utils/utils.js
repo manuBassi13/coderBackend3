@@ -1,7 +1,12 @@
+import { dirname } from "node:path"
+import { fileURLToPath } from "node:url"
 import { faker } from "@faker-js/faker";
 import bcrypt from 'bcrypt'
 
 export const createHash = (pass) => bcrypt.hashSync(pass, bcrypt.genSaltSync(10))
+
+const __filename = fileURLToPath(import.meta.url)
+export const __dirname = dirname(__filename)
 
 export const generatePet = () => {
     return{

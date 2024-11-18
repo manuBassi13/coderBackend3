@@ -1,10 +1,10 @@
 import express from "express"
-import MocksRouter from "./routes/mocks.router.js"
+import { AppInit } from './init/initialConfig.js'
 
 const app = express();
-const PORT = 8080
+AppInit(app)
 
-app.use('/api/mocks', MocksRouter)
+const PORT = process.env.PORT
 
 app.listen(PORT, () => {
     console.log("Escuchando en puerto: "+ PORT);

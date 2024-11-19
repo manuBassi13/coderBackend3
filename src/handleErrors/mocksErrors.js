@@ -11,13 +11,13 @@ export const generateUserErrorInfo = (user) => {
 export const mocksParamsErrorInfo = (...num) => {
     if(num.length > 1) {
         return `
-        Los números ingresados ${num} no son válidos. 
-        Debe ingresar números mayores a cero.
+        Los números ingresados [${num}] no son válidos. 
+        Debe ingresar números entre 1 y 50.
     `
     } else {
         return `
             El número ingresado ${num} no es válido. 
-            Debe ingresar un número mayor a cero.
+            Debe ingresar un número entre 1 y 50.
         `
     }
 }

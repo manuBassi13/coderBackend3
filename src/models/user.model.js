@@ -24,8 +24,13 @@ const userSchema = new Schema({
         require: true
     },
     pets: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'pets'
+        default: [],
+        type: [{
+            pet: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'pets'
+            }
+        }]
     }
 })
 

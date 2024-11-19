@@ -10,7 +10,6 @@ export const __dirname = dirname(__filename)
 
 export const generatePet = () => {
     return{
-        id: faker.database.mongodbObjectId(),
         petName: faker.animal.petName(),
         type: faker.animal.dog(),
         birthDate: faker.date.birthdate({mode: 'age', min:0, max: 20}),
@@ -22,7 +21,6 @@ export const generatePet = () => {
 
 export const generateUser = () => {
     return{
-        id: faker.database.mongodbObjectId(),
         first_name: faker.person.firstName(),
         last_name: faker.person.lastName(),
         birthDate: faker.date.birthdate(),

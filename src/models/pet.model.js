@@ -22,8 +22,9 @@ const petSchema = new Schema({
         default: false
     },
     image:{
-        data: Buffer,
-        contentType: String,
+        //data: Buffer,
+        //contentType: String,
+        type: String,
         default: null
     }
 })

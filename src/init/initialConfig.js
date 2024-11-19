@@ -1,6 +1,6 @@
 import express from 'express'
-import MocksRouter from "./routes/mocks.router.js"
-import { __dirname } from "../utils.js"
+import MocksRouter from "../routes/mocks.router.js"
+import { __dirname } from "../utils/utils.js"
 import {connectionDB } from "../mongo/connection.js"
 import dotenv from 'dotenv'
 
